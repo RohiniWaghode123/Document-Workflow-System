@@ -1,0 +1,36 @@
+package com.example.workflow.controller;
+
+import com.example.workflow.entity.Document;
+import com.example.workflow.service.DocumentService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/documents")
+public class DocumentController {
+    private final DocumentService service;
+
+    public DocumentController(DocumentService service) {
+        this.service = service;
+    }
+
+    @PostMapping
+    public Document upload(@RequestBody Document doc) {
+        return service.upload(doc);
+    }
+
+    @GetMapping
+    public List<Document> getAll() {
+        return service.getAll();
+    }
+    @PutMapping("/{id}/approve")
+    public Document approve(@PathVariable Long id) {
+        return service.approve(id);
+    }
+    @PutMapping("/{id}/reject")
+    public Document reject(@PathVariable Long id) {
+        return service.reject(id);
+    }
+
+}
