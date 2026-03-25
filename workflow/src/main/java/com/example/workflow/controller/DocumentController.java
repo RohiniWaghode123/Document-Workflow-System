@@ -20,7 +20,7 @@ public class DocumentController {
     public Document upload(@RequestBody Document doc) {
         return service.upload(doc);
     }
-
+    //file handling API
     @PostMapping("/upload-file")
     public String UploadFile(@RequestParam("file") MultipartFile file,
                              @RequestParam("name") String name){

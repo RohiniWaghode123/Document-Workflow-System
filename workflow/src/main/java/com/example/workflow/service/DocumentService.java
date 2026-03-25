@@ -49,7 +49,7 @@ public class DocumentService {
             if (!folder.exists()) {
                 folder.mkdir();
             }
-
+            //folderpath
             String filePath = folderPath + file.getOriginalFilename();
 
             file.transferTo(new File(filePath));
