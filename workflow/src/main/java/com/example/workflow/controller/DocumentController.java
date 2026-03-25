@@ -3,6 +3,7 @@ package com.example.workflow.controller;
 import com.example.workflow.entity.Document;
 import com.example.workflow.service.DocumentService;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -18,6 +19,12 @@ public class DocumentController {
     @PostMapping
     public Document upload(@RequestBody Document doc) {
         return service.upload(doc);
+    }
+
+    @PostMapping("/upload-file")
+    public String UploadFile(@RequestParam("file") MultipartFile file,
+                             @RequestParam("name") String name){
+        return service.uploadFile(file, name);
     }
 
     @GetMapping
